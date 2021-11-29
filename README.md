@@ -45,7 +45,7 @@ The following challenges are not coding challenges, but rather practical exeerci
 
 Day | Challenge | Description 
 ---|---|---
-9 | Buffer Overflow Exploitation | Do a buffer overflow on a Boot-To-Root box (e.g. Vulnhub). Follow a tutorial if you have not done this before 
+9 | Buffer Overflow Exploitation | Do a buffer overflow on a Boot-To-Root box (e.g. Vulnserver). Follow a tutorial if you have not done this before 
 10 | HackTheBox | Try any box on [HackTheBox](https://www.hackthebox.eu)
 
 ### Day 11-14: Basic Windows Malware-Development/Post-Exploitation
