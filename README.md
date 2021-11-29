@@ -36,8 +36,8 @@ Since phishing is one of the easiest ways to get into a system, we need to give 
 
 Day | Challenge | Description
 ---|---|---
-7 | Phishing Server | Write a script that clones a website (e.g. citrix login page) and hosts it 
-8 | Mail generator | Write a script that parses a template and fills in Names, Job Roles and the phishing URL 
+7 | Phishing Server | Write a script that clones a website (e.g. citrix login page) and hosts it. Record any POST-Requests to log credentials entered by victims. 
+8 | Mail generator | Write a script that parses an Email-template and fills in Names, Job Roles and the phishing URL. 
 
 ### Day 9-10: Exploitation
 
@@ -52,10 +52,9 @@ Day | Challenge | Description
 
 This intro to malware development should mostly be done in a language that has access to the Windows APIs such as C, C++, C#, Powershell or Nim. The C2 can be written in any language.
 
-
 Day | Challenge | Description
 ---|---|---
-11 | Keylogger | Write a Keylogger that records all keystrokes
+11 | Keylogger | Write a Keylogger that records keystrokes
 12 | Screengrabber | Add the functionality that a screenshot is taken every X seconds. Optionally add Webcam shots too.
 13 | Persistence | Add persistence (e.g. via adding to autostart)
 14 | C2 Functionality | Create a basic Command and Control Server (C2) that serves commands to the keylogger. The keylogger asks each X seconds for what to do (e.g. take a screenshot, send recorded key inputs) on a set url (e.g. http://192.168.2.10/task).
