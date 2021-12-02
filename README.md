@@ -12,6 +12,8 @@ The challenges are separated into different modules:
 
 **DISCLAIMER**: Prior experience in programming and, for the later modules (especially AV evasion), pentesting and security is required. These are not beginner-challenges! So do not be discouraged if a challenge is too hard for you. Just follow along a tutorial or just read something about the topic instead. The point is to get your feet wet and let you dive into the topic, not to do these challenges without help.
 
+I decided to take the opportunity to learn more about [Nim](https://github.com/nim-lang/Nim) this year by writing all challenges in nim.
+
 ### Day 1: Lab Setup
 
 Since you will have to test your scripts on a Windows Host (and since you don't want to infect your own host with your malware), you should setup a VM environment as a lab.
@@ -26,7 +28,7 @@ In any pentest or engagement, reconnaissance is the first thing to do. Here we t
 
 Day | Challenge | Description
 ---|---|---
-2 | Port Scanner | Write a basic TCP port scanner. Bonus: Multithreading 
+[2](./02_Portscanner) | Port Scanner | Write a basic TCP port scanner. Bonus: Multithreading 
 3 | Banner grabbing | Add the functionality to grab the banner of every open port 
 4 | OS Detection | Add the functionality to detect the OS (Linux/Windows/other) 
 5 | Zombie Scanning | Add [Zombie Scanning/Idle Scanning](https://nmap.org/book/idlescan.html) 
