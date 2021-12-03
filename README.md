@@ -29,7 +29,7 @@ In any pentest or engagement, reconnaissance is the first thing to do. Here we t
 Day | Challenge | Description
 ---|---|---
 [2](./02_Portscanner) | Port Scanner | Write a basic TCP port scanner. Bonus: Multithreading 
-3 | Banner grabbing | Add the functionality to grab the banner of every open port 
+[3](./03_BannerGrab) | Banner grabbing | Add the functionality to grab the banner of every open port 
 4 | OS Detection | Add the functionality to detect the OS (Linux/Windows/other) 
 5 | Zombie Scanning | Add [Zombie Scanning/Idle Scanning](https://nmap.org/book/idlescan.html) 
 6 | Directory Bruteforcer | Write a tool to discover valid pages on a webserver (think dirb, ffuf) 
