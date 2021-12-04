@@ -30,7 +30,7 @@ Day | Challenge | Description
 ---|---|---
 [2](./02_Portscanner) | Port Scanner | Write a basic TCP port scanner. Bonus: Multithreading 
 [3](./03_BannerGrab) | Banner grabbing | Add the functionality to grab the banner of every open port 
-4 | OS Detection | Add the functionality to detect the OS (Linux/Windows/other) 
+[4](./04_OSDetection) | OS Detection | Add the functionality to detect the OS (Linux/Windows/other) 
 5 | Zombie Scanning | Add [Zombie Scanning/Idle Scanning](https://nmap.org/book/idlescan.html) 
 6 | Directory Bruteforcer | Write a tool to discover valid pages on a webserver (think dirb, ffuf) 
 
@@ -82,17 +82,9 @@ Day | Challenge | Description
 
 ### Day 23: Bonus Challenge
 
-For this day, you can choose one of the below bonus challenges:
-
 Day | Challenge | Description 
 ---|---|---
-23 | Dumpcreds | Recreate Mimikatz sekurlsa::logonpasswords functionality
-
-or
-
-Day | Challenge | Description 
----|---|---
-23 | Windows CVE PoC | Write a PoC for a Windows CVE (e.g. HiveNightmare/Serious Sam)
+23 | Windows CVE PoC | Write a PoC for a Windows CVE (e.g. HiveNightmare/Serious Sam or PrintNightmare)
 
 ### Day 24: Celebrate
 

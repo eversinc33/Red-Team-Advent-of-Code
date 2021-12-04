@@ -1,9 +1,10 @@
-import strutils, strformat
+import std/strutils, std/strformat
 import std/asyncnet
 import std/times
 import std/net
-import os
-import asyncdispatch
+import std/os
+import std/osproc
+import std/asyncdispatch
 import argparse
 
 type
@@ -19,10 +20,12 @@ const
 var 
     open_ports: seq[PortState]
     p = newParser:
-        flag("-b", "--banner", help="Grab the banner for each open port")
+        flag("-b", "--banner", help="Grab the banner for each open port.")
+        flag("-o", "--os-detection", help="Guess the target's operating system based on its ping TTL.")
         arg("target")
     target: string
     grab_banner: bool
+    detect_os: bool
 
 proc scan_port_async(port: int): Future[PortState] {.async.} =
     var s = newAsyncSocket()
@@ -46,8 +49,39 @@ proc scan_port_async(port: int): Future[PortState] {.async.} =
         s.close()
         return PortState(port:port, open:true, banner:banner_grabbed)
 
+proc detect_os_ttl(): string =
+    echo "    Trying to detect OS..."
+    var ping: tuple[output: string, exit_code: int]
+
+    when system.hostOS == "windows":
+        ping = execCmdEx("ping -n 1 " & target)
+    else:
+        ping = execShellCmd("ping -c 1 " & target)
+
+    if ping.exit_code == 0:
+        let ttl: int = parseInt(ping.output.toLower().split("ttl=")[1].split("\n")[0])
+        echo fmt"    ...ping has TTL of {ttl}"
+
+        # hops are assumed to be <30
+        if 98 < ttl and ttl < 128:
+            return "Windows"
+        if 34 < ttl and ttl < 64:
+            return "Linux"
+        if 225 < ttl and ttl < 255:
+            return "Linux"
+    else:
+        echo "[!] Host not responding to ping. Is it up?"
+    
+    return "Unknown"
+    
+
 proc scan() = 
     echo fmt"[*] Starting scan on {target}"
+
+    var target_os = "Enable os detection with -o"
+    if detect_os: 
+        target_os = detect_os_ttl()
+
     let time = cpuTime()
 
     var futures = newSeq[Future[PortState]]()
@@ -56,13 +90,21 @@ proc scan() =
         futures.add(scan_port_async(port))
     
     open_ports = waitFor all(futures)
+    echo fmt"[*] Finished scanning {PORTS_TO_SCAN} ports on {target} in {cpuTime() - time}s" & "\n"
 
-    echo "\n" & fmt"[!] Results for {target}:" & "\n"
+    echo fmt"Results for {target}:"
+    echo fmt"OS: {target_os} (guessing based on ping TTL)" & "\n"
+    
+    var t_header = "Port State"
+    if grab_banner: t_header = t_header & " Banner"
+
+    echo t_header
     for port in open_ports:
         if port.open:
             echo fmt"{port.port} open {port.banner}"
 
-    echo "\n" & fmt"[*] Finished scanning {PORTS_TO_SCAN} ports on {target} in {cpuTime() - time}s" & "\n"
+    echo ""
+    
 
 when isMainModule:
     stdout.write dedent """
@@ -88,6 +130,7 @@ when isMainModule:
         if not isIpAddress(target):
             raise newException(UsageError, fmt"[!] {target} is not a valid IPv4 address")
         grab_banner = opts.banner
+        detect_os = opts.os_detection
         scan()
     except ShortCircuit as e:
         if e.flag == "argparse_help":
