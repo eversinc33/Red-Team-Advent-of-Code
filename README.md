@@ -31,8 +31,8 @@ Day | Challenge | Description
 [2](./02_Portscanner) | Port Scanner | Write a basic TCP port scanner. Bonus: Multithreading 
 [3](./03_BannerGrab) | Banner grabbing | Add the functionality to grab the banner of every open port 
 [4](./04_OSDetection) | OS Detection | Add the functionality to detect the OS (Linux/Windows/other) 
-5 | Zombie Scanning | Add [Zombie Scanning/Idle Scanning](https://nmap.org/book/idlescan.html) 
-6 | Directory Bruteforcer | Write a tool to discover valid pages on a webserver (think dirb, ffuf) 
+[5](./05_ZombieScan) | Zombie Scanning | Add [Zombie Scanning/Idle Scanning](https://nmap.org/book/idlescan.html) 
+[6](./06_WebDiscover) | Directory Bruteforcer | Write a tool to discover valid pages on a webserver (think dirb, ffuf) 
 
 ### Day 7-8: Initial Access: Phishing
 

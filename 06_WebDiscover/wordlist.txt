@@ -1,0 +1,4 @@
+robots.txt
+index.html
+bogus
+bogus2.php
