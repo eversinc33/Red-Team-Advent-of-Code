@@ -40,7 +40,7 @@ Since phishing is one of the easiest ways to get into a system, we need to give 
 
 Day | Challenge | Description
 ---|---|---
-7 | Phishing Server | Write a script that clones a website (e.g. citrix login page) and hosts it. Record any Form submits to log credentials entered by victims. 
+[7](./07_PhishingServer) | Phishing Server | Write a script that clones a website (e.g. citrix login page) and hosts it. Record any Form submits to log credentials entered by victims. 
 8 | Mail generator | Write a script that parses an Email-template and a list of victim data and fills in Names, Job Roles and the phishing URL and sends out a mail to the victims email address.
 
 ### Day 9-10: Exploitation
