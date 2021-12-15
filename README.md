@@ -60,8 +60,8 @@ Day | Challenge | Description
 ---|---|---
 [11](./11_Keylogger) | Keylogger | Write a Keylogger that records keystrokes
 [12](./12_Screenshot) | Screengrabber | Add the functionality that a screenshot is taken every X seconds. Optionally add Webcam shots too.
-13 | Persistence | Add persistence (e.g. via adding to autostart)
-14 | C2 Functionality | Create a basic Command and Control Server (C2) that serves commands to the keylogger. The keylogger asks each X seconds for what to do (e.g. take a screenshot, send recorded key inputs) on a set url (e.g. http://192.168.2.10/task).
+[13](./13_Autostart) | Persistence | Add persistence (e.g. via adding to autostart)
+[14](./14_C2) | C2 Functionality | Create a basic Command and Control Server (C2) that serves commands to the keylogger. The keylogger asks each X seconds for what to do (e.g. take a screenshot, send recorded key inputs) on a set url (e.g. http://192.168.2.10/task).
 
 ### Day 15-22: Antivirus Evasion
 
