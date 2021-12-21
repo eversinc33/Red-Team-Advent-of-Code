@@ -74,9 +74,9 @@ Day | Challenge | Description
 [15](./15_Caesar) | Caesar Cipher | Write a tool that applies a Caesar Cipher to a binary payload 
 [16](./16_Xor) | XOR Encoder | Write a tool that takes a key and applies an XOR cipher to a binary payload 
 [17](./17_Hollow) | Process Hollowing | Write a tool that takes a binary payload and spawns another process in which the payload is injected and executed 
-18 | DLL Injection | Write a tool that creates a DLL and causes another application to load the DLL and execute its code
-19 | Another injection technique | Lookup another technique and use it to inject shellcode
-20 | Sandbox Detection | Add Antivirus-Evasion techniques to your injectors from Day 17/18, e.g. check if you are in sandbox by checking the amount of CPU cores or check if a sleep statement is actually execute or skipped by the AV's sandbox. Lookup "AV evasion sandbox detection".
+[18](./18_DllInject) | DLL Injection | Write a tool that causes another process to load a DLL and execute its code
+[19](./19_ProcGhost) | Another injection technique | Lookup another technique and use it to inject shellcode
+[20](./20_Evasion) | Sandbox Detection | Add Antivirus-Evasion techniques to your injectors from Day 17/18, e.g. check if you are in sandbox by checking the amount of CPU cores or check if a sleep statement is actually execute or skipped by the AV's sandbox. Lookup "AV evasion sandbox detection".
 21 | Meterpreter Injector | Use the above to get a meterpreter payload past Windows Defender. Check for sandboxing, then decrypt your (XOR or Caesar) encrypted shellcode and inject it into a process.
 22 | AMSI Bypass Obfuscation Tool | Write a tool that takes Matt Graeber's One Line AMSI Bypass and obfuscates it randomly
 
