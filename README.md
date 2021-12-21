@@ -84,7 +84,7 @@ Day | Challenge | Description
 
 Day | Challenge | Description 
 ---|---|---
-23 | Windows CVE PoC | Write a PoC for a Windows CVE (e.g. HiveNightmare/Serious Sam or PrintNightmare)
+[23](./23_NimNightmare) | Windows CVE PoC | Write a PoC for a Windows CVE (e.g. HiveNightmare/Serious Sam or PrintNightmare)
 
 ### Day 24: Celebrate
 
