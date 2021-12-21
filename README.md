@@ -78,7 +78,7 @@ Day | Challenge | Description
 [19](./19_ProcGhost) | Another injection technique | Lookup another technique and use it to inject shellcode
 [20](./20_Evasion) | Sandbox Detection | Add Antivirus-Evasion techniques to your injectors from Day 17/18, e.g. check if you are in sandbox by checking the amount of CPU cores or check if a sleep statement is actually execute or skipped by the AV's sandbox. Lookup "AV evasion sandbox detection".
 21 | Meterpreter Injector | Use the above to get a meterpreter payload past Windows Defender. Check for sandboxing, then decrypt your (XOR or Caesar) encrypted shellcode and inject it into a process.
-22 | AMSI Bypass Obfuscation Tool | Write a tool that takes Matt Graeber's One Line AMSI Bypass and obfuscates it randomly
+[22](./22_AmsiBypass) | AMSI Bypass Obfuscation Tool | Write a tool that takes Matt Graeber's One Line AMSI Bypass and obfuscates it randomly
 
 ### Day 23: Bonus Challenge
 

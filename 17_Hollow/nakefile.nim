@@ -2,7 +2,7 @@ import nake
 import std/os
 
 const
-  ExeName    = "hollow"
+  ExeName    = "remotethread"
   as_release = "-d:release"
   danger     = "-d:danger"
 
