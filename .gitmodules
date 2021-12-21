@@ -1,0 +1,3 @@
+[submodule ".\\23_NimNightmare\\NimNightmare"]
+	path = .\\23_NimNightmare\\NimNightmare
+	url = https://github.com/fumamatar/NimNightmare
